@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider Inputs</title>
+    <style>
+        /* Style the container */
+        .slider-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Style the sliders */
+        .slider {
+            width: 50%;
+            -webkit-appearance: none;
+            appearance: none;
+            height: 25px;
+            border-radius: 5px;
+            background: #d3d3d3;
+            outline: none;
+            opacity: 0.7;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+            margin-top: 10px;
+        }
+
+        /* Style the thumb */
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: #4caf50;
+            cursor: pointer;
+        }
+
+        .slider::-moz-range-thumb {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: #4caf50;
+            cursor: pointer;
+        }
+
+        /* Style the output */
+        #output {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /* Style the submit button */
+        #submitBtn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: #4caf50;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Style the labels */
+        .slider-label {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        /* Style the duration input */
+        #durationInput {
+            margin-top: 20px;
+            font-size: 16px;
+            width: 25%;
+        }
+
+        /* Style the genre dropdown */
+        #genreSelect {
+            margin-top: 20px;
+            font-size: 16px;
+            width: 50%; /* Adjust width as needed */
+            padding: 8px; /* Add padding for better appearance */
+            border-radius: 5px;
+            border: 1px solid #d3d3d3;
+            background-color: #f9f9f9;
+            outline: none;
+        }
+
+            /* Style the key dropdown */
+        #keySelect {
+            margin-top: 20px;
+            font-size: 16px;
+            width: 50%; /* Adjust width as needed */
+            padding: 8px; /* Add padding for better appearance */
+            border-radius: 5px;
+            border: 1px solid #d3d3d3;
+            background-color: #f9f9f9;
+            outline: none;
+        }
+
+    </style>
+</head>
+<body>
+    <h2>Model Inputs</h2>
+    <div class="slider-container">
+        <label for="danceability" class="slider-label">Danceability:</label>
+        <input type="range" min="0" max="1" step="0.1" value="0.5" class="slider" id="danceability">
+        
+        <label for="energy" class="slider-label">Energy:</label>
+        <input type="range" min="0" max="1" step="0.1" value="0.5" class="slider" id="energy">
+        
+        <label for="speechiness" class="slider-label"> Speechiness:</label>
+        <input type="range" min="0" max="1" step="0.1" value="0.5" class="slider" id="speechiness">
+        
+        <label for="acousticness" class="slider-label">Acousticness:</label>
+        <input type="range" min="0" max="1" step="0.1" value="0.5" class="slider" id="acousticness">
+        
+        <label for="instrumentalness" class="slider-label">Instrumentalness:</label>
+        <input type="range" min="0" max="1" step="0.1" value="0.5" class="slider" id="instrumentalness">
+        
+        <label for="liveness" class="slider-label">Liveness:</label>
+        <input type="range" min="0" max="1" step="0.1" value="0.5" class="slider" id="liveness">
+
+        <label for="valence" class="slider-label">Valence:</label>
+        <input type="range" min="0" max="1" step="0.1" value="0.5" class="slider" id="valence">
+
+        <label for="loudness" class="slider-label">Loudness:</label>
+        <input type="range" min="-60" max="0" step="1" value="-30" class="slider" id="loudness">
+    </div>
+    <label for="durationInput" class="durationInput">Duration:</label>
+    <input type="number" min="0" max="6000000" step="1.0" value="228000" id="duration_ms">
+
+    <label for="tempoInput" class="durationInput">Tempo:</label>
+    <input type="number" min="0" max="250" step="1.0" value="120" id="tempo">
+
+    <div id="output"></div>
+    
+    <label for="genreSelect" class="genreSelect">Genre:</label>
+    <select id="track_genre">
+        {% for genre in genres %}
+        <option value="{{ genre }}">{{ genre.capitalize() }}</option>
+        {% endfor %}
+    </select>
+
+    <label for="keySelect" class="keySelect">Key:</label>
+    <select id="key">
+        {% for key in keys %}
+        <option value="{{ key }}">{{ key.capitalize() }}</option>
+        {% endfor %}
+    </select>
+    
+
+    <button id="submitBtn">Submit</button>
+
+    <script>
+
+        const sliders = document.querySelectorAll('.slider');
+        const output = document.getElementById('output');
+        const submitBtn = document.getElementById('submitBtn');
+        const durationInput = document.getElementById('duration_ms');
+        const tempoInput = document.getElementById('tempo');
+        const genreSelect = document.getElementById('track_genre');
+        // https://en.wikipedia.org/wiki/Pitch_class
+        const keySelect = document.getElementById('key');
+
+        // Function to handle submit button click
+        function handleSubmit() {
+            // Collect slider values
+            const sliderValues = {};
+            sliders.forEach(slider => {
+                sliderValues[slider.id] = parseFloat(slider.value);
+            });
+
+            const duration = parseFloat(durationInput.value);
+            const tempo = parseFloat(tempoInput.value);
+            const selectedGenre = genreSelect.value;
+            const selectedKey = keySelect.value;
+
+            const data = {
+                sliderValues: sliderValues,
+                duration_ms: duration,
+                tempo: tempo,
+                track_genre: selectedGenre,
+                key: selectedKey
+            };
+            fetch('/get_predictions_from_inputs', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json()) // Parse response as JSON
+            .then(data => {
+                // Assuming your prediction is a probability value
+                output.innerHTML = `Prediction: ${data.prediction}`;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+
+        // Add event listener to submit button
+        submitBtn.addEventListener('click', handleSubmit);
+
+    </script>
+</body>
+</html>
+
