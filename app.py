@@ -31,12 +31,17 @@ def index():
         , 'rock', 'rock-n-roll', 'rockabilly', 'romance', 'sad', 'salsa', 'samba', 'sertanejo', 'show-tunes', 'singer-songwriter'
         , 'ska', 'sleep', 'songwriter', 'soul', 'spanish', 'study', 'swedish', 'synth-pop', 'tango', 'techno'
         , 'trance', 'trip-hop', 'turkish', 'world-music']
-    keys = ['-1', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11']
-    return render_template('base.html', genres=genres, keys =keys)
+    keys =  ['None','C', 'C#/Bb', 'D', 'D#/Eb', 'E', 'F', 'F#/Gb', 'G', 'G#/Ab', 'A', 'A#/Bb', 'B']
+    return render_template('base.html', genres=genres, keys=keys)
 
 @app.route('/get_predictions_from_inputs', methods=['POST'])
 def get_predictions_from_inputs():
+    keys_dict =  {'None':-1,'C':0, 'C#/Bb':1, 'D':2, 'D#/Eb':3, 'E':4, 'F':5, 'F#/Gb':6, 'G':7, 'G#/Ab':8, 'A':9, 'A#/Bb':10, 'B':11}
     dict_inputs = request.json
+    ## code key numerically
+    dict_inputs['key'] = keys_dict[dict_inputs['key']]
+    ## convert to ms for model
+    dict_inputs['duration_ms'] = dict_inputs['duration_ms']*60000
     print(dict_inputs)
     slider_values_dict = dict_inputs.pop('sliderValues')
     dict_inputs.update(slider_values_dict)
@@ -44,9 +49,8 @@ def get_predictions_from_inputs():
     model = get_ClassifierModel()
     values = [dict_inputs.get(x) for x in model.feature_names_]
     prediction = get_prediction(model, values)
-    print(prediction)
-
-    return {'prediction': prediction}, 200
+    prediction_f = f"{round(prediction * 100, 1)}%"
+    return {'prediction': prediction_f}, 200
 
 if __name__ == '__main__':
     app.run(debug=True)
