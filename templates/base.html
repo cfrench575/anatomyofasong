@@ -71,96 +71,127 @@
         </div>
 
         <div class="model-sliders">
-          <label for="danceability" class="slider-label">Danceability:</label>
-          <input
-            type="range"
-            min="0"
-            max="1"
-            step="0.1"
-            value="0.5"
-            class="slider"
-            id="danceability"
-          />
+          <div class="slider-container">
+            <label for="danceability" class="slider-label">Danceability:</label>
+            <input
+              type="range"
+              min="0"
+              max="1"
+              step="0.1"
+              value="0.5"
+              class="slider"
+              id="danceability"
+              data-tooltip="Danceability describes how suitable a track is for dancing based on a combination of musical elements including tempo, rhythm stability, beat strength, and overall regularity."
+            />
+            <span class="tooltip-text">0.5</span>
+          </div>
+        
+          <div class="slider-container">
+            <label for="energy" class="slider-label">Energy:</label>
+            <input
+              type="range"
+              min="0"
+              max="1"
+              step="0.1"
+              value="0.5"
+              class="slider"
+              id="energy"
+              data-tooltip="Energy represents a perceptual measure of intensity and activity. Energetic tracks feel fast, loud, and noisy. For example, death metal has high energy, while a Bach prelude scores low on the scale. Perceptual features contributing to this attribute include dynamic range, perceived loudness, timbre, onset rate, and general entropy."
+            />
+            <span class="tooltip-text">Energy: 0.5</span>
+          </div>
+          
+          <div class="slider-container">
+            <label for="speechiness" class="slider-label"> Speechiness:</label>
+            <input
+              type="range"
+              min="0"
+              max="1"
+              step="0.1"
+              value="0.5"
+              class="slider"
+              id="speechiness"
+              data-tooltip="Speechiness detects the presence of spoken words in a track. The more exclusively speech-like the recording (e.g. talk show, audio book, poetry), the closer to 1.0 the attribute value. Values above 0.66 describe tracks that are probably made entirely of spoken words. Values between 0.33 and 0.66 describe tracks that may contain both music and speech, either in sections or layered, including such cases as rap music. Values below 0.33 most likely represent music and other non-speech-like tracks."
+            />
+            <span class="tooltip-text">Speechiness: 0.5</span>
+          </div>
 
-          <label for="energy" class="slider-label">Energy:</label>
-          <input
-            type="range"
-            min="0"
-            max="1"
-            step="0.1"
-            value="0.5"
-            class="slider"
-            id="energy"
-          />
-
-          <label for="speechiness" class="slider-label"> Speechiness:</label>
-          <input
-            type="range"
-            min="0"
-            max="1"
-            step="0.1"
-            value="0.5"
-            class="slider"
-            id="speechiness"
-          />
-
+          <div class="slider-container">
           <label for="acousticness" class="slider-label">Acousticness:</label>
-          <input
-            type="range"
-            min="0"
-            max="1"
-            step="0.1"
-            value="0.5"
-            class="slider"
-            id="acousticness"
-          />
+            <input
+              type="range"
+              min="0"
+              max="1"
+              step="0.1"
+              value="0.5"
+              class="slider"
+              id="acousticness"
+              data-tooltip="Acousticness is a confidence measure from 0.0 to 1.0 of whether the track is acoustic."
+            />
+            <span class="tooltip-text">Acousticness: 0.5</span>
+          </div>
 
-          <label for="instrumentalness" class="slider-label"
-            >Instrumentalness:</label
-          >
-          <input
-            type="range"
-            min="0"
-            max="1"
-            step="0.1"
-            value="0.5"
-            class="slider"
-            id="instrumentalness"
-          />
+          <div class="slider-container">
+            <label for="instrumentalness" class="slider-label">Instrumentalness:</label>
+            <input
+              type="range"
+              min="0"
+              max="1"
+              step="0.1"
+              value="0.5"
+              class="slider"
+              id="instrumentalness"
+              data-tooltip="Instrumentalness indicates whether a track contains no vocals. 'Ooh' and 'aah' sounds are treated as instrumental in this context. Rap or spoken word tracks are clearly 'vocal'. The closer the instrumentalness value is to 1.0, the greater likelihood the track contains no vocal content. Values above 0.5 are intended to represent instrumental tracks, but confidence is higher as the value approaches 1.0."
+            />
+            <span class="tooltip-text">Instrumentalness: 0.5</span>
+          </div>
 
-          <label for="liveness" class="slider-label">Liveness:</label>
-          <input
-            type="range"
-            min="0"
-            max="1"
-            step="0.1"
-            value="0.5"
-            class="slider"
-            id="liveness"
-          />
+          <div class="slider-container">
+            <label for="liveness" class="slider-label">Liveness:</label>
+            <input
+              type="range"
+              min="0"
+              max="1"
+              step="0.1"
+              value="0.5"
+              class="slider"
+              id="liveness"
+              data-tooltip="Liveness is the presence of an audience in the recording. Higher liveness values represent an increased probability that the track was performed live."
+            />
+            <span class="tooltip-text">Liveness: 0.5</span>
+          </div>
 
-          <label for="valence" class="slider-label">Valence:</label>
-          <input
-            type="range"
-            min="0"
-            max="1"
-            step="0.1"
-            value="0.5"
-            class="slider"
-            id="valence"
-          />
+          <div class="slider-container">
+            <label for="valence" class="slider-label">Valence:</label>
+            <input
+              type="range"
+              min="0"
+              max="1"
+              step="0.1"
+              value="0.5"
+              class="slider"
+              id="valence"
+              data-tooltip="Valence is a measure describing the musical positiveness conveyed by a track. Tracks with high valence sound more positive (e.g. happy, cheerful, euphoric), while tracks with low valence sound more negative (e.g. sad, depressed, angry)."
+            />
+            <span class="tooltip-text">Valence: 0.5</span>
+          </div>
 
+        <div class="slider-container">
           <label for="loudness" class="slider-label">Loudness:</label>
-          <input
-            type="range"
-            min="-60"
-            max="0"
-            step="1"
-            value="-30"
-            class="slider"
-            id="loudness"
-          />
-        </div>
+            <input
+              type="range"
+              min="-60"
+              max="0"
+              step="1"
+              value="-30"
+              class="slider"
+              id="loudness"
+              data-tooltip="Loudness is the overall loudness of a track in decibels (dB). Loudness values are averaged across the entire track and are useful for comparing relative loudness of tracks. Loudness is the quality of a sound that is the primary psychological correlate of physical strength (amplitude). Loundness values typically range between -60 and 0 db."
+            />
+            <span class="tooltip-text">Valence: 0.5</span>
+          </div>
+
+      </div>
         <button id="submitBtn">Submit</button>
       </div>
     </div>
@@ -206,7 +237,7 @@
           .then((data) => {
             // Assuming your prediction is a probability value
 
-            output.innerHTML = `<div style="text-align: center;">The likelihood of your song being popular based on the selected inputs is:   <span style="font-size: 32px;">${data.prediction}</span></div>`;
+            output.innerHTML = `<div style="text-align: center;">The likelihood of your song being popular based on the selected inputs is:  <br> <span style="font-size: 32px;">${data.prediction}</span></div>`;
           })
           .catch((error) => {
             console.error("Error:", error);
@@ -215,6 +246,46 @@
 
       // Add event listener to submit button
       submitBtn.addEventListener("click", handleSubmit);
+
+      document.querySelectorAll('.slider-container').forEach(container => {
+        const slider = container.querySelector('.slider');
+        const tooltip = container.querySelector('.tooltip-text');
+
+        function updateTooltipPosition() {
+          const sliderWidth = slider.offsetWidth;
+          const thumbWidth = slider.offsetHeight; // Assuming thumb is a square
+          const value = slider.value;
+          const max = slider.max;
+          const min = slider.min;
+
+          // Calculate the position in percentage
+          const percentage = ((value - min) / (max - min)) * 100;
+
+          // Set the tooltip's left position
+          tooltip.style.left = `calc(${percentage}% - ${thumbWidth / 2}px)`;
+              
+          const description = slider.getAttribute('data-tooltip')
+          const label = slider.id.charAt(0).toUpperCase() + slider.id.slice(1);
+          tooltip.innerHTML  = `${label}: ${value}<br><br>${description}`;
+
+          }
+
+        slider.addEventListener('mouseup', () => {
+            setTimeout(() => {
+              container.classList.remove('active');
+            }, 1000); // Tooltip will disappear after 1 second
+          });
+
+        // Initial update
+        updateTooltipPosition();
+
+        // Update tooltip position on input
+        slider.addEventListener('input', updateTooltipPosition);
+
+        slider.addEventListener('mousedown', () => {
+            container.classList.add('active');
+        });
+      });
 
     </script>
   </body>
