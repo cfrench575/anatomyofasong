@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+import markdown
 import pandas as pd
 import catboost as cb
 from catboost import CatBoostClassifier, Pool
@@ -32,7 +33,9 @@ def index():
         , 'ska', 'sleep', 'songwriter', 'soul', 'spanish', 'study', 'swedish', 'synth-pop', 'tango', 'techno'
         , 'trance', 'trip-hop', 'turkish', 'world-music']
     keys =  ['None','C', 'C#/Bb', 'D', 'D#/Eb', 'E', 'F', 'F#/Gb', 'G', 'G#/Ab', 'A', 'A#/Bb', 'B']
-    return render_template('base.html', genres=genres, keys=keys)
+    markdown_content_explainer = '''What makes a song popular? To find out, design your very own pop songs using custom machine learning model inputs to predict your song’s popularity.  For more information on the algorithm and training data (including a link to the python code) please visit this page [**here**](https://cfrench575.github.io/posts/spotify-random-forest/)'''
+    html_content_explainer = markdown.markdown(markdown_content_explainer)
+    return render_template('base.html', genres=genres, keys=keys, explainer_content=html_content_explainer)
 
 @app.route('/get_predictions_from_inputs', methods=['POST'])
 def get_predictions_from_inputs():

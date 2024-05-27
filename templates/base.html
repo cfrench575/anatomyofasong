@@ -9,19 +9,22 @@
       href="https://fonts.googleapis.com/css2?family=Aldrich&family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" type="text/css" href="./styles.css" />
-    <title>Slider Inputs</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/styles.css') }}" />
+
+    <title>Anatomy of a Song</title>
   </head>
   <body>
     <div class="background-color-1"></div>
     <div class="background-color-2"></div>
-    <div class="model-inputs-contatiner">
+    <div class="model-inputs-container">
       <div class="model-inputs-sliders">
-        <h2 class="title">Model Inputs</h2>
+        <h2 class="title">Anatomy of a Song</h2>
+        <div id="subtitle" class="subtitle">
+          {{ explainer_content|safe }}
+        </div>
         <div class="model-inputs">
-          <label class="input-label" for="durationInput" class="durationInput"
-            >Duration (minutes):</label
-          >
+          <label class="input-label" for="durationInput" class="durationInput">
+            Duration (minutes):</label>
           <input
             class="input"
             type="number"
@@ -63,8 +66,7 @@
             {% endfor %}
           </select>
           <div id="output">
-            Change the values of the inputs and click submit.The probability
-            that you've made a popular song will display here.
+            Change the values of the inputs and click submit.
           </div>
         </div>
 
@@ -204,7 +206,7 @@
           .then((data) => {
             // Assuming your prediction is a probability value
 
-            output.innerHTML = `Prediction: ${data.prediction}`;
+            output.innerHTML = `<div style="text-align: center;">The likelihood of your song being popular based on the selected inputs is:   <span style="font-size: 32px;">${data.prediction}</span></div>`;
           })
           .catch((error) => {
             console.error("Error:", error);
@@ -213,6 +215,7 @@
 
       // Add event listener to submit button
       submitBtn.addEventListener("click", handleSubmit);
+
     </script>
   </body>
 </html>
