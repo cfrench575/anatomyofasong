@@ -67,14 +67,15 @@ a:hover {
   background-image: url('../img/anatomy_of_a_song.png'); /* Replace 'path/to/your/image.jpg' with the path to your image file */
   background-size: 100%; /* Adjust as needed */
   background-position: center; /* Adjust as needed */
-  /* background: rgba(41, 47, 60, 1);  Adjust the alpha value (0.8) for the desired transparency */
   color: whitesmoke;
   border-radius: 25px;
   width: 60vw;
   /* padding: 1vmin 4vmin; */
-  gap: 5vmin;
+  gap: 2vmin;
   /* box-shadow: 0px 0px 10px 1px rgb(0 0 0 / 10%); */
   justify-items: center;
+  padding-top: 2vmin;
+  padding-bottom: 20vmin; 
 }
 
 .title {
