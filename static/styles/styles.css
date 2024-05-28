@@ -32,7 +32,8 @@ a:hover {
   width: 68.25rem;
   border-radius: 100%;
   filter: blur(15rem);
-  background: linear-gradient(200deg, #74456a6b, #0000);
+  background-color: #74456a47;
+  /* background: linear-gradient(200deg, #74456a87, #0000); */
 }
 
 .background-color-2 {
@@ -44,8 +45,8 @@ a:hover {
   width: 68.25rem;
   border-radius: 100%;
   filter: blur(15rem);
-  /* background-color: #42f3d259; */
-  background: linear-gradient(200deg, #42f3d324, #0000);
+  background-color: #42f3d320;
+  /* background: linear-gradient(200deg, #42f3d359, #0000); */
 }
 
 .model-inputs-conta {
@@ -89,7 +90,7 @@ a:hover {
   text-align: center;
   font-size: 18px;
   margin-top: 0.5rem;
-  color: #FFFFFF;
+  color: whitesmoke;
 }
 
 .model-inputs {
@@ -112,7 +113,7 @@ a:hover {
 .select {
   margin: 10px 50px;
   border: 1px solid #828282;
-  color: white;
+  color: whitesmoke;
   padding: 14px;
   background: #2d2c2cba;
   border-radius: 5px;
@@ -151,7 +152,7 @@ a:hover {
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background: whitesmoke;
+  background: #42f3d3f1;
   cursor: pointer;
 }
 
@@ -174,7 +175,7 @@ a:hover {
   visibility: hidden;
   width: 500px;
   background-color: #74456aef;
-  color: white;
+  color: whitesmoke;
   text-align: center;
   border-radius: 6px;
   padding: 10px 10px;
@@ -216,9 +217,9 @@ a:hover {
   margin-top: 20px;
   padding: 10px 20px;
   font-size: 20px;
-  /* border: none; */
+  border-color: whitesmoke;
   background-color: #74456ac4;
-  color: white;
+  color: whitesmoke;
   border-radius: 5px;
   cursor: pointer;
   grid-area: button;
